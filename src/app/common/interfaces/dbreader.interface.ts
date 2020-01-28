@@ -11,13 +11,18 @@ export interface DbReaderNode {
   metadata?: DbReaderMetadata;
 }
 
-export enum DbType  {
+export enum DbType {
   MICROSOFT_SQL_SERVER = 'mssql',
+  CSV = 'csv',
 }
 
 export const DbTypes = [
   {
     name: 'Microsoft SQL Server',
     value: DbType.MICROSOFT_SQL_SERVER,
+  },
+  {
+    name: 'CSV',
+    value: DbType.CSV,
   },
 ];

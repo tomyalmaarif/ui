@@ -5,6 +5,7 @@ import { ThingsService } from 'app/common/services/things/things.service';
 import { NotificationsService } from 'app/common/services/notifications/notifications.service';
 import { DbTypes, DbType } from 'app/common/interfaces/dbreader.interface';
 import { MsSQLServerClass } from 'app/common/classes/mssql.class';
+import { CSVClass } from 'app/common/classes/csv.class';
 import { Subject } from 'rxjs';
 import { ChannelsService } from 'app/common/services/channels/channels.service';
 
@@ -23,9 +24,9 @@ export class DbReaderDetailsComponent implements OnInit {
   channels = [];
 
   selectedDbType = null;
-  editorMetadata;
 
   dbTypes = DbTypes;
+
   eventsSubject: Subject<void> = new Subject<void>();
 
   constructor(
@@ -40,11 +41,8 @@ export class DbReaderDetailsComponent implements OnInit {
     this.thingsService.getThing(id).subscribe(
       resp => {
         this.thing = <Thing>resp;
-        if (this.thing.metadata.db_reader_data !== undefined) {
-          this.selectedDbType = this.thing.metadata.db_reader_data.dbtype;
-        } else {
-          this.selectedDbType = null;
-        }
+        this.selectedDbType = this.thing.metadata.db_reader_data &&
+          this.thing.metadata.db_reader_data.dbtype;
         this.findDisconnectedChans();
       },
     );
@@ -54,11 +52,14 @@ export class DbReaderDetailsComponent implements OnInit {
     switch (value) {
       case DbType.MICROSOFT_SQL_SERVER:
         this.thing.metadata.db_reader_data = new MsSQLServerClass();
-        this.thing.metadata.db_reader_data.dbtype = this.selectedDbType;
+        break;
+      case DbType.CSV:
+        this.thing.metadata.db_reader_data = new CSVClass();
         break;
       default:
-        break;
+        return;
     }
+    this.thing.metadata.db_reader_data.dbtype = value;
   }
 
   onEdit() {

@@ -30,6 +30,7 @@ import { GatewaysXtermComponent } from 'app/pages/things/gateways/details/xterm/
 import { DbReaderComponent } from './dbreader/dbreader.component';
 import { DbReaderDetailsComponent } from './dbreader/details/dbreader.details.component';
 import { MssqlComponent } from './dbreader/templates/mssql/mssql.component';
+import { CSVComponent } from './dbreader/templates/csv/csv.component';
 
 
 @NgModule({
@@ -61,10 +62,12 @@ import { MssqlComponent } from './dbreader/templates/mssql/mssql.component';
     DbReaderComponent,
     DbReaderDetailsComponent,
     MssqlComponent,
+    CSVComponent,
   ],
   entryComponents: [
     ConfirmationComponent,
     MssqlComponent,
+    CSVComponent,
   ],
 })
 export class ThingsModule { }

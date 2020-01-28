@@ -13,6 +13,7 @@
       </nb-card-body>
     </nb-card>
   </div>
+  
   <div class="col-md-6">
     <nb-card size="tiny" status="info">
       <nb-card-header>
@@ -44,9 +45,11 @@
           Edit
         </button>
       </nb-card-header>
+      
       <nb-card-body>
         <div class="col-md-12">
           <div class="row">
+            
             <div class="col-12">
               <div class="col-md-12 decorate">
                 <label for="dbtype">DB type:</label> &nbsp;
@@ -57,17 +60,20 @@
                 </nb-select>
               </div>
             </div>
-            <div class="col-12" *ngIf="selectedDbType != null; else default">
-              <ngx-mssql [thing]="thing" [events]="eventsSubject.asObservable()"></ngx-mssql>
-            </div>
-            <ng-template #default>
-              <div class="col-8">
-                DB type is not selected.
+            
+            <div *ngIf="selectedDbType">
+              <div [ngSwitch]="selectedDbType">
+                <ngx-mssql *ngSwitchCase="'mssql'" [thing]="thing" [events]="eventsSubject.asObservable()"></ngx-mssql>
+                <ngx-csv *ngSwitchCase="'csv'" [thing]="thing" [events]="eventsSubject.asObservable()"></ngx-csv>
+                <div *ngSwitchDefault class="col-8">DB type is not selected.</div>
               </div>
-            </ng-template>
+            </div>
+            
           </div>
         </div>
+        
       </nb-card-body>
     </nb-card>
+    
   </div>
 </div>
