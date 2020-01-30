@@ -37,6 +37,26 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/things/gateways',
       },
     ],
+  },{
+    title: 'Clover',
+    icon: 'keypad-outline',
+    children: [
+      {
+        title: 'Devices',
+        icon: 'film-outline',
+        link: '/pages/clover/devices',
+      },
+      {
+        title: 'Channels',
+        icon: 'flip-2-outline',
+        link: '/pages/things/channels',
+      },
+      {
+        title: 'Gateways',
+        icon: 'hard-drive-outline',
+        link: '/pages/things/gateways',
+      },
+    ],
   },
   {
     title: 'Admin',
