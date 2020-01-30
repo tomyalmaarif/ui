@@ -22,6 +22,9 @@ const routes: Routes = [{
       path: 'things',
       loadChildren: 'app/pages/things/things.module#ThingsModule',
     }, {
+      path: 'clover',
+      loadChildren: 'app/pages/clover/clover.module#CloverModule',
+    }, {
       path: 'admin',
       loadChildren: 'app/pages/admin/admin.module#AdminModule',
     }, {
