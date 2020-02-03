@@ -4,7 +4,8 @@ import { NotificationsService } from 'app/common/services/notifications/notifica
 import { MqttManagerService } from 'app/common/services/mqtt/mqtt.manager.service';
 import { Service } from 'app/pages/clover/gateways/details/services/services.interface'
 import { Message } from 'app/common/interfaces/mainflux.interface';
-
+import { Gateway } from 'app/common/interfaces/gateway.interface';
+import { interval } from 'rxjs';
 import { LocalDataSource } from 'ng2-smart-table';
 @Component({
   selector: 'ngx-services-info',
@@ -17,15 +18,28 @@ export class ServicesComponent  {
   limit = 20;
   total = 0;
   services: Service[];
+  @Input() gateway: Gateway;
 
   source: LocalDataSource = new LocalDataSource();
 
   settings = {
     
     actions: {
+        custom: [
+          {
+            name: 'runAction',
+            title: '<i class="ion-document" title="Run"></i>'
+          },
+          {
+            name: 'connectAction',
+            title: '<i class="ion-edit" title="Connect"></i>'
+          },
+        ],
         add: false,
         edit: false,
         delete: false,
+        position:  "right",
+        class: "action-column",
       },
   
     columns: {
@@ -76,21 +90,19 @@ export class ServicesComponent  {
     private notificationsService: NotificationsService,
     private mqttManagerService: MqttManagerService,
   ) { 
+
+    const poller = interval(10000);
+    // Subscribe to begin publishing values
+    poller.subscribe(n => {
+        this.mqttManagerService.publish(this.gateway.metadata.ctrlChannelID, '1', 'service', 'view');
+    })
+
     const mcSub = this.mqttManagerService.messageChange.subscribe(
         (message: Message) => {
-          this.services = []
-          var s =[];
-          s = <Service[]>JSON.parse(message.vs.toString())
-          var el
-          for (let el of s ){
-              this.services.push(el)
-          }
+          this.services = <Service[]>JSON.parse(message.vs.toString())
           this.source.load(this.services)
           this.source.refresh()
         },
       );
-  
   }
-
-  
 }

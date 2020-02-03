@@ -161,7 +161,6 @@ export class GatewaysComponent implements OnInit {
                 gw.seen = msgResp.messages[0].time;
                 gw.messages = msgResp.total;
               }
-
               this.gateways.push(gw);
               this.source.load(this.gateways);
               this.source.refresh();

@@ -16,8 +16,6 @@ import { ConfirmationComponent } from 'app/shared/confirmation/confirmation.comp
 
 import { GatewaysComponent } from 'app/pages/clover/gateways/gateways.component';
 import { GatewaysDetailsComponent } from 'app/pages/clover/gateways/details/gateways.details.component';
-import { GatewaysInfoComponent } from 'app/pages/clover/gateways/details/info/gateways.info.component';
-import { GatewaysConfigComponent } from 'app/pages/clover/gateways/details/config/gateways.config.component';
 import { ServicesComponent } from './gateways/details/services/services.component';
 
 @NgModule({
@@ -35,8 +33,6 @@ import { ServicesComponent } from './gateways/details/services/services.componen
   declarations: [
     GatewaysComponent,
     GatewaysDetailsComponent,
-    GatewaysInfoComponent,
-    GatewaysConfigComponent,
     ServicesComponent,
   ],
   entryComponents: [
