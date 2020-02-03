@@ -14,14 +14,11 @@ import { CloverRoutingModule } from "./clover.routing.module";
 import { PagesModule } from 'app/pages/pages.module';
 import { ConfirmationComponent } from 'app/shared/confirmation/confirmation.component';
 
-import { DevicesComponent } from 'app/pages/things/devices/devices.component';
-import { ChannelsComponent } from 'app/pages/things/channels/channels.component';
-import { DevicesDetailsComponent } from 'app/pages/things/devices/details/devices.details.component';
-import { ChannelsDetailsComponent } from 'app/pages/things/channels/details/channels.details.component';
-import { GatewaysComponent } from 'app/pages/things/gateways/gateways.component';
-import { GatewaysDetailsComponent } from 'app/pages/things/gateways/details/gateways.details.component';
-import { GatewaysInfoComponent } from 'app/pages/things/gateways/details/info/gateways.info.component';
-import { GatewaysConfigComponent } from 'app/pages/things/gateways/details/config/gateways.config.component';
+import { GatewaysComponent } from 'app/pages/clover/gateways/gateways.component';
+import { GatewaysDetailsComponent } from 'app/pages/clover/gateways/details/gateways.details.component';
+import { GatewaysInfoComponent } from 'app/pages/clover/gateways/details/info/gateways.info.component';
+import { GatewaysConfigComponent } from 'app/pages/clover/gateways/details/config/gateways.config.component';
+import { ServicesComponent } from './gateways/details/services/services.component';
 
 @NgModule({
   imports: [
@@ -36,14 +33,11 @@ import { GatewaysConfigComponent } from 'app/pages/things/gateways/details/confi
     FormsModule,
   ],
   declarations: [
-    DevicesComponent,
-    ChannelsComponent,
-    DevicesDetailsComponent,
-    ChannelsDetailsComponent,
     GatewaysComponent,
     GatewaysDetailsComponent,
     GatewaysInfoComponent,
     GatewaysConfigComponent,
+    ServicesComponent,
   ],
   entryComponents: [
     ConfirmationComponent,

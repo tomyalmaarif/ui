@@ -1,29 +1,11 @@
-import { Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
-import { ChannelsComponent } from 'app/pages/things/channels/channels.component';
-import { DevicesComponent } from 'app/pages/things/devices/devices.component';
-import { DevicesDetailsComponent } from 'app/pages/things/devices/details/devices.details.component';
-import { ChannelsDetailsComponent } from 'app/pages/things/channels/details/channels.details.component';
-import { GatewaysComponent } from 'app/pages/things/gateways/gateways.component';
-import { GatewaysDetailsComponent } from 'app/pages/things/gateways/details/gateways.details.component';
+
+import { GatewaysComponent } from 'app/pages/clover/gateways/gateways.component';
+import { GatewaysDetailsComponent } from 'app/pages/clover/gateways/details/gateways.details.component';
 
 export const routes: Routes = [
-  {
-    path: 'devices',
-    component: DevicesComponent,
-  },
-  {
-    path: 'devices/details/:id',
-    component: DevicesDetailsComponent,
-  },
-  {
-    path: 'channels',
-    component: ChannelsComponent,
-  },
-  {
-    path: 'channels/details/:id',
-    component: ChannelsDetailsComponent,
-  },
   {
     path: 'gateways',
     component: GatewaysComponent,
@@ -34,4 +16,9 @@ export const routes: Routes = [
   },
 ];
 
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
+})
 export class CloverRoutingModule {}

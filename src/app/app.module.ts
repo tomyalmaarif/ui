@@ -40,7 +40,7 @@ import {
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   connectOnCreate: false,
   hostname: 'localhost',
-  port: 80,
+  port: 8881,
   protocol: 'ws',
   path: '/mqtt',
 };

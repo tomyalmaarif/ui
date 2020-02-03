@@ -42,19 +42,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'keypad-outline',
     children: [
       {
-        title: 'Devices',
-        icon: 'film-outline',
-        link: '/pages/clover/devices',
-      },
-      {
-        title: 'Channels',
-        icon: 'flip-2-outline',
-        link: '/pages/things/channels',
-      },
-      {
         title: 'Gateways',
         icon: 'hard-drive-outline',
-        link: '/pages/things/gateways',
+        link: '/pages/clover/gateways',
       },
     ],
   },
